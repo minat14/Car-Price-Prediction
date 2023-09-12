@@ -1,0 +1,102 @@
+<!doctype html>
+
+<html>
+    <style>
+        form {
+            margin: auto;
+            width: 45%;
+        }
+        .result {
+            margin: auto;
+            width: 45%;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <head>
+        <title>Car Price Predictions</title>
+    </head>
+    <form action="{{ url_for('main') }}" method="POST">
+        <fieldset>
+            <label for="make"> Car Make:</label>
+            <input list="makes" name="make" id="make">
+            <datalist id="makes">
+                <option value="Abarth">
+                <option value="Alfa">
+                <option value="Audi">
+                <option value="BMW">
+                <option value="Chevrolet">
+                <option value="Citroen">
+                <option value="Cupra">
+                <option value="DS">
+                <option value="Dacia">
+                <option value="Fiat">
+                <option value="Ford">
+                <option value="Honda">
+                <option value="Hyundai">
+                <option value="Jaguar">
+                <option value="Jeep">
+                <option value="Kia">
+                <option value="Land">
+                <option value="Lexus">
+                <option value="Mazda">
+                <option value="Mercedes">
+                <option value="Mini">
+                <option value="Mitsubishi">
+                <option value="Nissan">
+                <option value="Opel">
+                <option value="Peugeot">
+                <option value="Porsche">
+                <option value="Renault">
+                <option value="SEAT">
+                <option value="Skoda">
+                <option value="Smart">
+                <option value="Ssangyong">
+                <option value="Subaru">
+                <option value="Suzuki">
+                <option value="Toyota">
+                <option value="Volkswagen">
+                <option value="Volvo">
+            </datalist>
+            <br>
+            <br> Model Year:
+            <input name="year" type="number" required>
+            <br>
+            <br>
+            <label for="fuel">Fuel Type:</label>
+            <input list="fuels" name="fuel" id="fuel">
+            <datalist id="fuels">
+                <option value="Diésel">
+                <option value="Eléctrico">
+                <option value="GLP">
+                <option value="Gasolina">
+                <option value="Híbrido">
+            </datalist>
+            <br>
+            <br>
+            <label for="transmission">Transmission Type:</label>
+            <input list="transmissions" name="transmission" id="transmission">
+            <datalist id="transmissions">
+                <option value="Automatica">
+                <option value="Manual">
+            </datalist>
+            <br>
+            <br> Mileage:
+            <input name="mileage" type="number" required>
+            <br>
+            <br>
+            <input type="submit">
+        </fieldset>
+    </form>
+    <br>
+    <div class="result" align="center">
+        {% if result %}
+            {% for variable, value in original_input.items() %}
+                <b>{{ variable }}</b> : {{ value }}
+            {% endfor %}
+                <br>
+            <br> Predicted value of car:
+                <p style="font-size:50px">{{ result }}</p>
+        {% endif %}
+
+    </div>
+</html>
